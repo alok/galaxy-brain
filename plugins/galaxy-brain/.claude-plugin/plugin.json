@@ -1,0 +1,9 @@
+{
+  "name": "galaxy-brain",
+  "version": "0.1.0",
+  "description": "Reframe ladder plus a six-test descent; returns the highest rung that survives",
+  "author": {
+    "name": "Alok Singh",
+    "email": "alokbeniwal@gmail.com"
+  }
+}

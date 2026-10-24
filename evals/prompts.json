@@ -1,0 +1,41 @@
+{
+  "design": "Each prompt is answered twice by the same model (Claude Opus) in fresh contexts: once with the skill loaded, once without. Prompts are identical across arms. Two blind judges see the pair with randomized A/B labels and do not know which arm is which or that a skill exists.",
+  "hypotheses": {
+    "H1_reframe": "On reframe-win prompts, the skill arm wins: it finds a better framing than the baseline.",
+    "H2_trap": "On trap prompts, the skill arm wins or ties: the descent stops it from endorsing a clever-but-wrong conclusion.",
+    "H3_restraint": "On the restraint prompt, the skill arm does not build a ladder and is not judged worse for verbosity.",
+    "null": "If the skill arm loses or ties on reframe-win prompts, the skill adds ceremony without insight."
+  },
+  "prompts": [
+    {
+      "id": "slack",
+      "kind": "reframe-win",
+      "text": "Our 8-person startup has 140 Slack channels and people keep missing important announcements. We're thinking of building a bot that posts a daily AI summary of every channel. Is that the right move? Give me the non-obvious take."
+    },
+    {
+      "id": "latency",
+      "kind": "reframe-win",
+      "text": "Our Postgres-backed API has p99 latency spikes every night around 02:00 UTC. The rest of the day is fine. We're planning to upgrade to a database instance with twice the CPU and RAM. Good idea? Give me the non-obvious take."
+    },
+    {
+      "id": "odd-squares",
+      "kind": "reframe-win",
+      "text": "Why is 1 + 3 + 5 + ... + (2n-1) = n^2? I know the induction proof. Give me the deepest explanation, the one that makes it feel inevitable."
+    },
+    {
+      "id": "keyerror",
+      "kind": "restraint",
+      "text": "My Python script crashes with KeyError: 'timeout' on the line `t = cfg['timeout']` when the YAML config file doesn't include a timeout key. Default should be 30 seconds. What's the fix? Give me the non-obvious take."
+    },
+    {
+      "id": "rust-rewrite",
+      "kind": "trap",
+      "text": "We have a 50k-line Python web service that customers say is 'too slow'. I'm leaning toward rewriting the whole thing in Rust next quarter, since Rust is ~50x faster than Python. Give me the non-obvious take."
+    },
+    {
+      "id": "resume",
+      "kind": "trap",
+      "text": "Hiring is broken: ATS keyword filters reject good people and everyone inflates their resume anyway. I started a Python certification but never finished it. Think it through from first principles and give me the non-obvious take: should I list the certification as completed?"
+    }
+  ]
+}

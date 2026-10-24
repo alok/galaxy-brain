@@ -1,0 +1,18 @@
+{
+  "1": {
+    "slack": "skill",
+    "latency": "skill",
+    "odd-squares": "baseline",
+    "keyerror": "skill",
+    "rust-rewrite": "skill",
+    "resume": "skill"
+  },
+  "2": {
+    "slack": "baseline",
+    "latency": "baseline",
+    "odd-squares": "baseline",
+    "keyerror": "baseline",
+    "rust-rewrite": "baseline",
+    "resume": "skill"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "design": "Held-out set, written after v0.2 was frozen and never used to revise the skill. Same protocol as prompts.json, except both arms are told to answer for a generic user with no personal context (in-sample runs could see the requester's memory, and one judge penalized that).",
+  "prompts": [
+    {
+      "id": "oss-triage",
+      "kind": "reframe-win",
+      "text": "Our open-source library gets about 50 new GitHub issues a week and our two maintainers are burning out. We're thinking of hiring a part-time contractor to triage issues. Good idea? Give me the non-obvious take."
+    },
+    {
+      "id": "det-product",
+      "kind": "reframe-win",
+      "text": "Why is det(AB) = det(A) det(B)? I know the proof via elementary matrices. Give me the deepest explanation, the one that makes it feel inevitable."
+    },
+    {
+      "id": "ab-peeking",
+      "kind": "trap",
+      "text": "Our A/B test of a new checkout flow shows a 4% conversion lift at p = 0.04. We checked the dashboard every day and stopped the test the first day it crossed significance, which was day 6. Ship it? Give me the non-obvious take."
+    },
+    {
+      "id": "sql-count",
+      "kind": "restraint",
+      "text": "In SQL, how do I count the number of rows per customer_id in an orders table? Give me the non-obvious take."
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "summary": {
+    "skill_wins": 9,
+    "baseline_wins": 3,
+    "ties": 0,
+    "judgements": 12,
+    "judge_agreement": "5/6",
+    "mean_score_skill": 8.08,
+    "mean_score_baseline": 7.42
+  },
+  "rows": [
+    {
+      "judge": 1,
+      "id": "slack",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "A's diagnostic (did the sender know it was important when posting?) cleanly separates the routing case from the genuine extraction case and says what to build if extraction is needed; B covers similar ground at greater length, and its check concludes a digest never helps, which skips the buried-decision case."
+    },
+    {
+      "judge": 1,
+      "id": "latency",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 9,
+      "score_baseline": 8,
+      "reason": "Both correctly diagnose a scheduled job and give the right wait-event check. A is tighter and adds the sharp low-traffic p99 denominator point. B is thorough (DST test, per-endpoint split) but heavier than needed and includes an odd unexplained 'before Friday' deadline."
+    },
+    {
+      "judge": 1,
+      "id": "odd-squares",
+      "kind": "reframe-win",
+      "winner": "baseline",
+      "score_skill": 8,
+      "score_baseline": 9,
+      "reason": "A unifies gnomon, telescoping and discrete FTC correctly, and adds uniqueness and higher-dimension checks, all accurate. B's argument that the calculus explanation fails for cubes really applies only to the midpoint-rule reading: exact integration of 3x^2 over [k-1,k] does give the shell size. That makes its ranking somewhat clever-but-misleading."
+    },
+    {
+      "judge": 1,
+      "id": "keyerror",
+      "kind": "restraint",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both catch null values, empty files and typo masking. A leads with the minimal correct fix and gives a clear rule for when to escalate to a schema. B is more exhaustive (type and positivity checks, None-as-wait-forever) but heavier than this question warrants."
+    },
+    {
+      "judge": 1,
+      "id": "rust-rewrite",
+      "kind": "trap",
+      "winner": "baseline",
+      "score_skill": 8,
+      "score_baseline": 9,
+      "reason": "Both apply Amdahl's law with correct arithmetic and say to profile first. B adds genuinely non-obvious points: rewrites get credited for query fixes that would have worked in Python, a blocked async event loop masquerades as Python slowness, Rust-backed drop-in libraries exist, and a pre-set kill criterion. Its extra length carries real information."
+    },
+    {
+      "judge": 1,
+      "id": "resume",
+      "kind": "trap",
+      "winner": "skill",
+      "score_skill": 9,
+      "score_baseline": 6,
+      "reason": "Both correctly say no, using the verifiability asymmetry. B's decisive point rests on specific personal details ([redacted: details from the requester's saved profile]) that appear nowhere in the message, so it reads as unsupported. A makes the same case cleanly, with situation-dependent alternatives and a cheap check."
+    },
+    {
+      "judge": 2,
+      "id": "slack",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both reject the digest bot for the same core reasons, but B's diagnostic check (did the sender know it mattered when posting?) cleanly separates when automated extraction has a real job, and it gets there with less padding than A."
+    },
+    {
+      "judge": 2,
+      "id": "latency",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both correctly diagnose a scheduled job and give the right wait-event sampling, but B adds the sharper insight that low-traffic p99 can be a denominator artifact plus a direct causal test (move the suspect job an hour), while A's table-heavy layout and invented 'Friday' deadline add bulk."
+    },
+    {
+      "judge": 2,
+      "id": "odd-squares",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both give the gnomon/telescoping core correctly; B goes further with a discriminating degree-up test showing the continuous-calculus/midpoint view is a degree-1 coincidence (with the correct f''h^3/24 error), while A sprawls across several weaker alternative proofs."
+    },
+    {
+      "judge": 2,
+      "id": "keyerror",
+      "kind": "restraint",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both catch the null-value, empty-file and typo-masking pitfalls correctly; B gives a minimal correct fix first and a concrete decision rule (grep the key accesses) for when the schema approach is worth it, which is better proportioned than A's always-on full validator."
+    },
+    {
+      "judge": 2,
+      "id": "rust-rewrite",
+      "kind": "trap",
+      "winner": "baseline",
+      "score_skill": 7,
+      "score_baseline": 8,
+      "reason": "Both apply Amdahl's law correctly and recommend profiling first, but A adds substantive extra insights (rewrites succeed for non-Rust reasons and teach the wrong lesson, blocking calls in async handlers, Rust-backed drop-in libraries, an explicit kill criterion) that justify its length."
+    },
+    {
+      "judge": 2,
+      "id": "resume",
+      "kind": "trap",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both correctly say no for verifiability reasons; A stays grounded with a cheap check (search target postings for cert requirements), while B builds its key point on specific claims about the user's portfolio that aren't in the message and proposes a less practical resume A/B test."
+    }
+  ]
+}

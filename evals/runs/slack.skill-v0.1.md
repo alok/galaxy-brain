@@ -1,0 +1,17 @@
+Probably not. Eight people with 140 channels is about 17 channels per person. A daily summary of all 140 just adds a 141st channel, written by a model that decides what counts as important. That decision is exactly the thing that's failing now.
+
+| Rung | Move | Claim | How you'd tell it's right | Verdict |
+|---|---|---|---|---|
+| 🧠 1 | Obvious | A bot posts a daily AI summary of every channel | People read it every day for months, and missed announcements drop | **Weak.** Daily digests usually get skimmed and then ignored within a few weeks. The summarizer ranks your announcement next to everyone's chatter. When it drops something, nobody notices. Worst of all, it moves the job from the sender ("I made sure they knew") to the reader ("it was in the summary"). |
+| ✨ 2 | Zoom in | The missed announcements come from a few people and are posted in many different places | Of your last ~10 missed announcements, most came from 2–3 people (probably the founders), spread over 5 or more channels | **Survives if the pattern holds.** That makes it a routing problem: create one #announcements channel where only a few people can post, with a rule that discussion goes in threads. |
+| 🤯 3 | Change the objective | The goal isn't "people read more." It's "the sender knows the message landed." | The missed ones are the ones nobody confirmed. Things people acted on had someone reply or react. | **Survives. This is the answer.** Anything important gets posted in #announcements and needs a ✅ reaction. The sender follows up with anyone who hasn't reacted. If you want a bot, make it this one: after 24 hours it DMs anyone who hasn't reacted to an announcement. That's about 50 lines of code, cheap, easy to undo, and it can't skip anything. |
+| 🌌 4 | Change the layer | 140 channels is the real problem. You're using channels as folders. | More than 70% of channels have fewer than 5 messages in the last 30 days | **Survives as a supporting step, not the fix.** Archive anything that's been dead for 30 days, which you can undo at any time, and aim for 15–25 channels. Fewer channels don't fix announcements on their own, though: 20 channels is still enough places for things to get lost. |
+| 🪐 5 | Dissolve | At 8 people, anything that matters shouldn't rely on text alone | Missed items are things that would have come up in a 15-minute weekly sync | **Survives as a backstop.** A good habit, but it brings back the real-time meeting cost that async work is meant to avoid. |
+
+**Clever-arguer check on the bot:** the summarizer appeals because nobody has to change how they behave. That's the warning sign. It's buying technology to avoid a five-minute agreement about where announcements go.
+
+**Verdict:** rung 3 with rung 2's routing: one locked #announcements channel, a ✅ reaction to acknowledge, and at most a small bot that chases missing reactions. Do the rung 4 channel cleanup the same week. About 75% confident.
+
+**Cheapest test (20 minutes):** list the last 5–10 announcements people missed. For each, ask whether the sender knew it was important when they posted it.
+- **Mostly yes:** routing and acknowledgment fix it. Don't build the summarizer.
+- **Mostly no:** the importance only became clear later, such as a key decision buried in a #proj-x thread. Routing can't catch that because nobody thought to route it. A summarizer, or better, an "extract decisions" bot that flags them, starts to make sense. Even then, try Slack's built-in AI recaps before building your own.
