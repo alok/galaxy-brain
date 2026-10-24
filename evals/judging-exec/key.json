@@ -1,0 +1,82 @@
+{
+  "R983": {
+    "prompt": "exec-test-set",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R525": {
+    "prompt": "exec-test-set",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R234": {
+    "prompt": "exec-test-set",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R129": {
+    "prompt": "exec-test-set",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R731": {
+    "prompt": "exec-peeking",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R499": {
+    "prompt": "exec-peeking",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R488": {
+    "prompt": "exec-peeking",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R428": {
+    "prompt": "exec-peeking",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R381": {
+    "prompt": "exec-onboarding",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R289": {
+    "prompt": "exec-onboarding",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R627": {
+    "prompt": "exec-onboarding",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R605": {
+    "prompt": "exec-onboarding",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R124": {
+    "prompt": "exec-resume",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R933": {
+    "prompt": "exec-resume",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R580": {
+    "prompt": "exec-resume",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R261": {
+    "prompt": "exec-resume",
+    "arm": "skill",
+    "sample": "s2"
+  }
+}

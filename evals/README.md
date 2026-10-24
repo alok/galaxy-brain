@@ -1,6 +1,6 @@
 # Evals
 
-All runs use Claude Opus (`claude-opus-5-5`), one sample per arm per prompt, in fresh contexts. Each prompt is answered with the skill and without it, by the same model. Two blind Opus judges compare each pair. They see seeded random A/B labels and are not told that a skill exists ([`blind.py`](blind.py)). Every raw output, packet, key and verdict is committed.
+The A/B runs use Claude Opus (`claude-opus-5-5`), one sample per arm per prompt, in fresh contexts. The trap runs use Claude Haiku with two samples per arm (see [Traps on Haiku](#traps-on-haiku-h2)). Each prompt is answered with the skill and without it, by the same model. Two blind Opus judges compare each pair. They see seeded random A/B labels and are not told that a skill exists ([`blind.py`](blind.py)). Every raw output, packet, key and verdict is committed.
 
 ## Results
 
@@ -22,7 +22,28 @@ Sources: [`results-v0.1.json`](results-v0.1.json), [`results-v0.2.json`](results
 
 - **Wins:** questions asking for the deep explanation (odd-squares 3/4 across versions; det-product 2/2 held-out). Narrow questions under "non-obvious" pressure, where it answers short and doesn't climb (keyerror 2/2, sql-count 2/2).
 - **Losses:** rust-rewrite went 0/4 across both versions. Plain Opus produced a richer, more concrete answer there. oss-triage was 0/2, with the skill's answer marked down for "a strawman rule-out list and a confidence tag" that leaked through.
-- **Untestable here:** H2, that the descent stops clever-but-wrong conclusions. Baseline Opus never endorsed the bad move on any trap prompt (resume, rust-rewrite, ab-peeking), so there was nothing to catch. Testing H2 needs a weaker model or subtler traps.
+- **Untestable on Opus:** H2, that the descent stops clever-but-wrong conclusions. Baseline Opus never endorsed the bad move on any trap prompt (resume, rust-rewrite, ab-peeking), so there was nothing to catch. The next section tries a weaker model.
+
+## Traps on Haiku (H2)
+
+This test was pre-registered and committed before any run ([`prompts-traps.json`](prompts-traps.json), [`prompts-exec.json`](prompts-exec.json)). Claude Haiku answered each prompt twice with skill v0.2 and twice without it. Every output was then shuffled under an opaque ID, and two blind Opus graders checked it against a written "bad move" definition ([`traps.py`](traps.py)).
+
+| Set | Prompts | Endorsed the bad move: baseline | Endorsed: skill | Grader agreement | Mean quality (base / skill) |
+|---|---|---|---|---|---|
+| Stated traps: the flawed argument is put to the model to evaluate | 6 | **0 / 24** | **0 / 24** | 24/24 | 7.71 / 8.00 |
+| Execution traps: the flaw is buried in "write me X" | 4 | **0 / 16** | **0 / 16** | 16/16 | 7.00 / 7.50 |
+
+Sources: [`results-traps.json`](results-traps.json), [`results-exec.json`](results-exec.json).
+
+**H2 is still untested.** Across 80 graded outputs, Haiku never fell for a trap: not the expected-value moonshot, not selection bias, not tuning on the test set, not peeking, not résumé fabrication. That held even when the flaw was buried inside a request to just write something. When the base model already catches the trap, the descent has nothing to add. These are textbook traps. Showing the descent earning its keep would need traps the model *generates itself*, through a long chain of its own reasoning. That is a different eval.
+
+**The gate risk didn't happen.** Before the run, I worried that the gate ("decision already made, user wants execution → don't climb") would switch off the check on execution requests. The skill arm flagged every flaw.
+
+**The new failure mode is the execution format.** On execution requests, graders called out padding or "rejected-rungs / confidence sections" in 7 of 16 skill-arm grades versus 1 of 16 for baseline. 4 of 20 skill outputs had headers like "Confidence" or "Rejected options", and baseline outputs never did. One skill output also overrode the user's decision to ship at 100% inside the drafted announcement. Both graders flagged that, and it violates test 2's "keep the objective." Quality was still slightly higher for the skill arm. The shipped skill is **not** changed in response. Any fix would be fit to these same 4 prompts, so it's logged as the v0.3 candidate below.
+
+**v0.3 candidate (not shipped, not tested):** when the user asks for an artifact, deliver the artifact, corrected if needed, plus one or two sentences on the flaw. Don't restructure it into answer/check/rejected sections. Don't change a decision that is the user's to make; flag it instead.
+
+One execution-trap output (`runs-exec/exec-peeking.baseline.s1.md`) came back as the agent's reply rather than a written file. It was transcribed verbatim, apart from un-escaping `&gt;` to `>`.
 
 ## Caveats, in order of severity
 
@@ -43,6 +64,8 @@ SKILL_VERSION=v0.2 python3 evals/blind.py          # build blinded packets from 
 # have two fresh judges write judging-v0.2/verdict-{1,2}.json using judge-prompt.md
 SKILL_VERSION=v0.2 python3 evals/blind.py score    # unblind and tally
 PROMPT_SET=heldout SKILL_VERSION=v0.2 python3 evals/blind.py score
+python3 evals/traps.py score                       # Haiku stated traps
+TRAP_SET=exec python3 evals/traps.py score         # Haiku execution traps
 ```
 
 Judges rank on correctness, then insight, then actionability, then proportionality. Full prompts for the judges and both answer arms are in [`judge-prompt.md`](judge-prompt.md).

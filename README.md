@@ -60,7 +60,9 @@ Then the fixed point met data. This is the part worth reading:
 
 The armchair fixed point was wrong. The skill's own descent should have caught that: a verdict with no distinguishing observation behind it doesn't pay rent. Blind judges said the content was fine but the visible ladder was ceremony. v0.2 keeps the ladder as private working and delivers plain prose. The held-out margin is smaller than the in-sample one, as you'd expect from a revision fit to 6 prompts. n is tiny, so read the numbers as direction, not proof. Full numbers, caveats and raw outputs are in [`evals/`](evals/README.md).
 
-Where it helps: deep-explanation questions, and restraint on narrow questions. Where it doesn't: plain Opus already refuses the trap prompts, so the descent had nothing to catch, and on one engineering-strategy prompt (rust-rewrite) the baseline won 4/4.
+Where it helps: deep-explanation questions, and restraint on narrow questions. Where it doesn't: on one engineering-strategy prompt (rust-rewrite), the baseline won 4/4.
+
+**The safety claim remains unproven.** The descent is meant to stop clever-but-wrong conclusions. I tried it on Haiku with 10 pre-registered traps, some stated outright and some buried inside "just write me X". Haiku fell for **0 of 80** with or without the skill, so there was nothing to stop. The skill arm graded slightly higher on quality. On execution requests, though, it showed one new failure: the answer/check/rejected scaffolding sometimes leaks into the artifact as headers. See [Traps on Haiku](evals/README.md#traps-on-haiku-h2).
 
 ## Layout
 
