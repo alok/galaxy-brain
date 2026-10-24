@@ -1,0 +1,122 @@
+{
+  "R983": {
+    "prompt": "resume",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R525": {
+    "prompt": "resume",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R234": {
+    "prompt": "resume",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R129": {
+    "prompt": "resume",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R731": {
+    "prompt": "rust-rewrite",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R499": {
+    "prompt": "rust-rewrite",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R488": {
+    "prompt": "rust-rewrite",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R428": {
+    "prompt": "rust-rewrite",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R381": {
+    "prompt": "ab-peeking",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R289": {
+    "prompt": "ab-peeking",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R627": {
+    "prompt": "ab-peeking",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R605": {
+    "prompt": "ab-peeking",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R124": {
+    "prompt": "moonshot-ev",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R933": {
+    "prompt": "moonshot-ev",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R580": {
+    "prompt": "moonshot-ev",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R261": {
+    "prompt": "moonshot-ev",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R259": {
+    "prompt": "onboarding-corr",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R687": {
+    "prompt": "onboarding-corr",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R881": {
+    "prompt": "onboarding-corr",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R788": {
+    "prompt": "onboarding-corr",
+    "arm": "skill",
+    "sample": "s2"
+  },
+  "R587": {
+    "prompt": "test-set-tuning",
+    "arm": "baseline",
+    "sample": "s1"
+  },
+  "R222": {
+    "prompt": "test-set-tuning",
+    "arm": "baseline",
+    "sample": "s2"
+  },
+  "R127": {
+    "prompt": "test-set-tuning",
+    "arm": "skill",
+    "sample": "s1"
+  },
+  "R229": {
+    "prompt": "test-set-tuning",
+    "arm": "skill",
+    "sample": "s2"
+  }
+}
