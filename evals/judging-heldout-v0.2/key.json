@@ -1,0 +1,14 @@
+{
+  "1": {
+    "oss-triage": "skill",
+    "det-product": "skill",
+    "ab-peeking": "baseline",
+    "sql-count": "skill"
+  },
+  "2": {
+    "oss-triage": "baseline",
+    "det-product": "baseline",
+    "ab-peeking": "baseline",
+    "sql-count": "baseline"
+  }
+}

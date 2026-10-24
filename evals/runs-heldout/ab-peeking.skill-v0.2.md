@@ -1,0 +1,16 @@
+**Not on this evidence. The non-obvious part is that peeking damages two things, and they deserve different responses: your claim that the lift is 4%, and your decision about whether to ship.**
+
+**The claim is badly damaged.** You looked once a day and stopped the first time p dipped under 0.05. Run that procedure on two identical checkout flows with six daily looks and it "finds" a winner roughly 15% of the time, not 5%. If you would have kept going past day 6, the rate is even higher. The 4% is also biased upward. Stopping at the first crossing means you stopped on the day the noise was most in your favor, so the true lift is probably well under 4%, possibly 0. For calibration: a sequential design built for daily looks (Pocock boundaries over 6 looks) would have needed a nominal p of about 0.015 on day 6. An O'Brien-Fleming design planned over two weeks would have needed about 0.001. Your 0.04 clears neither. Six days also doesn't cover a full weekly cycle, and a new checkout flow can show early novelty or confusion effects that fade.
+
+**The decision is only mildly damaged.** The data still say the new flow is unlikely to be worse. What they don't say is how much better it is. Waiting costs very little: half your traffic is already on the new flow, so a couple more weeks gives up at most half of a lift that is probably small. That asymmetry makes waiting the right call (about 75% confident):
+
+1. **Keep the test running to a fixed end date you commit to now.** That means at least 2 full weeks, with a sample size powered for a realistic lift of 1–2%, not 4%. Analyze once, at the end.
+2. **The cheapest check:** treat the data from day 7 onward as a replication. If the lift is real, it shows up again in fresh data you didn't stop on. If it was luck or novelty, it shrinks toward zero. This also tells you whether the effect fades over time.
+3. **Decide on revenue per visitor, not conversion rate.** A checkout change can raise conversion while lowering order value, or pull purchases earlier without adding new ones. Also confirm the traffic split actually came out at the intended ratio (a sample ratio mismatch check), since a broken split invalidates everything else.
+
+If you're under real pressure and the flow is cheap to roll back, shipping now is defensible. In that case, record the lift as "probably positive, size unknown, likely below 4%", not as +4%. The worse outcome of shipping now isn't a bad checkout. It's a fake 4% going into the forecast and the team learning that stopping at the first significant day works.
+
+**Clever-sounding alternatives, and why they don't rescue the result:**
+- *"Switch to a Bayesian analysis, where the stopping rule doesn't matter."* That's technically true. But it only holds up with an honest prior, and an honest prior for checkout changes (most produce lifts near zero) shrinks 4% down hard anyway. You end up in the same place.
+- *"Ship with a 5% holdback group and measure later."* A holdback that small takes a long time to detect a 1–2% lift. It works as a fallback, not as a substitute for the test.
+- *"Just ban looking at the dashboard."* Nobody follows that rule. The lasting fix is a sequential testing method (always-valid p-values, or alpha-spending boundaries) so people can look every day without inflating false positives. Set that up before the next test.

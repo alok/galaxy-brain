@@ -1,6 +1,8 @@
 # How this skill was designed: by running it on itself
 
-The request was "write a galaxy brain skill, and galaxy brain the skill itself." So the design is the skill's own procedure, applied to the problem *what should a galaxy-brain skill be?* That trace is round 0. Rounds 1+ hand the finished SKILL.md to a fresh Opus instance and have it run the skill on the skill, repeating until the surviving verdict is "change nothing" (a fixed point). Those logs are in [`evals/self-application/`](evals/self-application/).
+The request was "write a galaxy brain skill, and galaxy brain the skill itself." So the design is the skill's own procedure, applied to the problem *what should a galaxy-brain skill be?* That trace is round 0. Rounds 1–2 hand the finished SKILL.md to a fresh Opus instance and have it run the skill on the skill, repeating until the surviving verdict is "change nothing". Round 2 declared that fixed point. Round 3 is the skill applied to the blind eval that rejected the fixed point. All the logs are in [`evals/self-application/`](evals/self-application/).
+
+The lesson, in the skill's own terms: rounds 1–2 were rungs with no distinguishing observation, and they failed test 1. Round 3 had data.
 
 ## Round 0: the bootstrap ladder
 

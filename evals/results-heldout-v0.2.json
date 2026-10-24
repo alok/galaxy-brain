@@ -1,0 +1,85 @@
+{
+  "summary": {
+    "skill_wins": 5,
+    "baseline_wins": 3,
+    "ties": 0,
+    "judgements": 8,
+    "judge_agreement": "3/4",
+    "mean_score_skill": 7.88,
+    "mean_score_baseline": 7.62
+  },
+  "rows": [
+    {
+      "judge": 1,
+      "id": "oss-triage",
+      "kind": "reframe-win",
+      "winner": "baseline",
+      "score_skill": 7,
+      "score_baseline": 8,
+      "reason": "Both correctly identify that decisions, not sorting, drive burnout and that close authority plus inflow reduction matter; B adds the stronger reframe (hire a reproduction engineer, check whether infra/releases are the real drain) and a 3-month experiment with pre-set success criteria, which outweighs its extra length. A's issue-clustering idea and crisp decision rule are good but its outright dismissal of community triagers is weaker than B's contractor-coaches-volunteers plan."
+    },
+    {
+      "judge": 1,
+      "id": "det-product",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 9,
+      "score_baseline": 8,
+      "reason": "Both give the correct exterior-power/functoriality argument and the correct abelianization uniqueness fact; A is tighter and adds sharper insight for an expert, notably the Z/6 test that separates the real reason from the volume picture and a precise critique of eigenvalue and K-theory 'explanations', while B spends more length on pedagogy and a repetitive summary."
+    },
+    {
+      "judge": 1,
+      "id": "ab-peeking",
+      "kind": "trap",
+      "winner": "baseline",
+      "score_skill": 7,
+      "score_baseline": 8,
+      "reason": "Both correctly diagnose peeking inflation, truncation bias, the incomplete weekly cycle and the need for guardrail metrics; A's decisive extra is the quantitative point that confirming a realistic 1-2% lift needs roughly 7-8x the traffic (6-7 weeks), which B glosses as 'a couple more weeks'. B is slightly more accurate on the false-positive rate and rightly warns that small holdbacks are underpowered, a caveat A's 10% holdback plan omits, but this does not outweigh A's sharper insight."
+    },
+    {
+      "judge": 1,
+      "id": "sql-count",
+      "kind": "restraint",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both give the correct query and the key pitfalls (missing zero-order customers, COUNT(*) after a LEFT JOIN, the NULL group, line items vs orders); A delivers them more proportionately and adds a cheap diagnostic check (COUNT(*) vs COUNT(DISTINCT order_id)), while B's useful join fan-out warning comes with padding on FILTER/HAVING that the question didn't need."
+    },
+    {
+      "judge": 2,
+      "id": "oss-triage",
+      "kind": "reframe-win",
+      "winner": "baseline",
+      "score_skill": 7,
+      "score_baseline": 8,
+      "reason": "Both correctly find that sorting is not the real burnout source. A's reframe, hiring a reproduction engineer with written authority to close issues, plus its point that the drain may be infrastructure rather than issues, is the sharper non-obvious take. B's issue-clustering idea is strong, but B also carries filler: a strawman rule-out list and a confidence tag."
+    },
+    {
+      "judge": 2,
+      "id": "det-product",
+      "kind": "reframe-win",
+      "winner": "skill",
+      "score_skill": 9,
+      "score_baseline": 8,
+      "reason": "Both give the correct exterior-power and abelianization account. B is tighter. It shows that the user's elementary-matrix proof is the same argument in coordinates (B -> det(AB) is alternating in B). It also gives a falsifiable test over Z/6 and F_2 that separates the real reason from the volume picture."
+    },
+    {
+      "judge": 2,
+      "id": "ab-peeking",
+      "kind": "trap",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both handle peeking inflation and winner's-curse bias correctly. A's main recommendation, a 10% holdback for about 2 weeks sized for a 1-2% lift, conflicts with its own power calculation, since a 90/10 split needs far more traffic. B sees this and gives the cheaper and sounder plan: keep the test running and treat the post-day-6 data as a replication."
+    },
+    {
+      "judge": 2,
+      "id": "sql-count",
+      "kind": "restraint",
+      "winner": "skill",
+      "score_skill": 8,
+      "score_baseline": 7,
+      "reason": "Both cover the main traps: zero-order customers, COUNT(*) after a LEFT JOIN, NULL groups, and line items vs orders. B is more proportionate for a simple question and adds a concrete one-line diagnostic (COUNT(*) vs COUNT(DISTINCT order_id)). A pads with FILTER and HAVING, which add less."
+    }
+  ]
+}

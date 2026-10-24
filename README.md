@@ -27,7 +27,7 @@ git clone https://github.com/alok/galaxy-brain
 cp -r galaxy-brain/plugins/galaxy-brain/skills/galaxy-brain ~/.claude/skills/
 ```
 
-**Claude.ai / desktop:** upload `plugins/galaxy-brain/skills/galaxy-brain/` as a skill (Settings → Capabilities → Skills).
+**Claude apps:** zip `plugins/galaxy-brain/skills/galaxy-brain/` and add it as a custom skill.
 
 **Codex:** the repo ships `.agents/skills/galaxy-brain` (a symlink to the same folder), so it's picked up when you work inside a clone.
 
@@ -50,7 +50,17 @@ And a gate in front of all of it: narrow question with an obvious answer → no 
 
 The skill was designed by running its own procedure on the question "what should a galaxy-brain skill be?" ([DESIGN.md](DESIGN.md)), then handed to fresh Opus instances that applied it to its own SKILL.md until the surviving verdict was "change nothing".
 
-<!-- RESULTS -->
+Then the fixed point met data. This is the part worth reading:
+
+| Version | How it was made | Blind A/B vs. plain Opus |
+|---|---|---|
+| v0.0 | Round 0: the skill designs itself | — |
+| v0.1 | Rounds 1–2: Opus self-applies until "change nothing" | **lost 4–8** (in-sample) |
+| v0.2 | Round 3: the skill applied to its own eval failure | **won 9–3** in-sample, **5–3 held-out** |
+
+The armchair fixed point was wrong. The skill's own descent should have caught that: a verdict with no distinguishing observation behind it doesn't pay rent. Blind judges said the content was fine but the visible ladder was ceremony. v0.2 keeps the ladder as private working and delivers plain prose. The held-out margin is smaller than the in-sample one, as you'd expect from a revision fit to 6 prompts. n is tiny, so read the numbers as direction, not proof. Full numbers, caveats and raw outputs are in [`evals/`](evals/README.md).
+
+Where it helps: deep-explanation questions, and restraint on narrow questions. Where it doesn't: plain Opus already refuses the trap prompts, so the descent had nothing to catch, and on one engineering-strategy prompt (rust-rewrite) the baseline won 4/4.
 
 ## Layout
 
@@ -58,12 +68,12 @@ The skill was designed by running its own procedure on the question "what should
 plugins/galaxy-brain/skills/galaxy-brain/SKILL.md   the skill
 .agents/skills/galaxy-brain                         symlink for Codex
 DESIGN.md                                           round-0 ladder: the skill designing itself
-evals/self-application/round-{0,1,2}/               fixed-point iteration, with ladders
-evals/prompts.json                                  A/B prompts and pre-registered hypotheses
-evals/runs/                                         raw outputs, both arms
-evals/judging/                                      blinded packets, key, judge verdicts
+evals/self-application/round-*/                     self-application rounds 0-3, with ladders
+evals/prompts*.json                                 in-sample and held-out prompts, hypotheses
+evals/runs*/                                        raw outputs, both arms
+evals/judging-*/                                    blinded packets, keys, judge verdicts
 evals/restraint/                                    narrow-prompt restraint probe
-evals/results.json                                  scored results
+evals/results-*.json                                scored results
 ```
 
 ## License
